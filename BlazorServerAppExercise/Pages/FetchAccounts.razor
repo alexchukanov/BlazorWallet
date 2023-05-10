@@ -1,0 +1,46 @@
+﻿@page "/fetchaccounts"
+@using BlazorServerAppExercise.Data
+@inject AccountService AccountService
+
+<PageTitle>Wallet</PageTitle>
+
+<h1>Wallet</h1>
+
+<p>This component demonstrates fetching accounts from Infura dApps service.</p>
+
+@if (accounts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+                <th>Balance</th>               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in accounts)
+            {
+                <tr>
+                    <td>@account.Id</td>
+                    <td>@account.Address</td>
+                    <td>@account.Balance</td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {    
+
+    private List<Account>? accounts;
+
+    protected override async Task OnInitializedAsync()
+    {        
+        accounts = await AccountService.GetAccountListAsync();
+    }
+}
