@@ -12,7 +12,7 @@ namespace BlazorServerAppExercise.Data
         readonly string filePath = "wallets.sql";
         readonly int rowsNum = 0; // 0 = show all records
         string baseUrl = $"https://mainnet.infura.io/v3/";
-        string infuraKey = "";   //enter your PK for Infura
+        string infuraKey = "480d416ddecd4ab19f33174723bd8dcb";   //enter your PK for Infura
         Web3 web3;
 
         public AccountService()
